@@ -1,0 +1,463 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#4f8ef7;--blue2:rgba(79,142,247,0.1);--blue3:rgba(79,142,247,0.22);--bg:#07070d;--bg2:#0d0d18;--bg3:#121220;--line:rgba(255,255,255,0.06);--line2:rgba(255,255,255,0.11);--t1:#f4f4f8;--t2:rgba(244,244,248,0.55);--t3:rgba(244,244,248,0.28);--green:#4ade80;--orange:#fb923c;--purple:#c084fc;--teal:#2dd4bf}
+body,html{background:var(--bg)}
+.root{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t2);min-height:700px}
+
+.nav{display:flex;justify-content:space-between;align-items:center;padding:.9rem 2rem;border-bottom:0.5px solid var(--line);background:rgba(7,7,13,0.98);position:sticky;top:0;z-index:100}
+.logo{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--t1);cursor:pointer;letter-spacing:-0.3px}
+.logo span{color:var(--blue)}
+.nav-r{display:flex;gap:.5rem;align-items:center}
+.ntab{font-size:12px;color:var(--t3);cursor:pointer;padding:5px 10px;border-radius:6px;transition:all .15s;border:0.5px solid transparent}
+.ntab:hover{color:var(--t1);background:var(--bg3)}
+.ntab.on{color:var(--t1);background:var(--bg3);border-color:var(--line2)}
+.nhire{font-size:12px;padding:5px 14px;border-radius:6px;background:var(--blue);color:#fff;cursor:pointer;transition:opacity .15s;font-weight:500}
+.nhire:hover{opacity:.85}
+
+.sec{display:none;animation:fadeIn .2s ease}
+.sec.on{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+.hero{padding:3rem 2rem 2rem;max-width:680px;margin:0 auto}
+.avail{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--green);border:0.5px solid rgba(74,222,128,0.2);padding:4px 12px;border-radius:100px;margin-bottom:1.5rem;background:rgba(74,222,128,0.05)}
+.avail-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:700;line-height:1.08;letter-spacing:-1.2px;color:var(--t1);margin-bottom:.9rem}
+.h1 .blue{color:var(--blue)}
+.h1 .typed{border-right:2px solid var(--blue);padding-right:2px}
+.tagline{font-size:14px;color:var(--t2);max-width:480px;line-height:1.7;margin-bottom:1.75rem}
+.tagline strong{color:var(--t1);font-weight:500}
+.hbtns{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.bp{display:inline-flex;align-items:center;gap:5px;padding:.55rem 1.1rem;background:var(--blue);color:#fff;font-size:13px;font-weight:500;border-radius:7px;cursor:pointer;border:none;transition:opacity .15s}
+.bp:hover{opacity:.85}
+.bg{display:inline-flex;align-items:center;gap:5px;padding:.55rem 1.1rem;background:transparent;color:var(--t2);font-size:13px;border-radius:7px;border:0.5px solid var(--line2);cursor:pointer;transition:all .15s}
+.bg:hover{border-color:rgba(255,255,255,0.25);color:var(--t1)}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-radius:12px;overflow:hidden;border:0.5px solid var(--line);margin-bottom:2rem}
+.stat{background:var(--bg2);padding:1.2rem 1rem;text-align:center;transition:background .15s;cursor:default}
+.stat:hover{background:var(--bg3)}
+.sn{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:var(--t1);display:block;letter-spacing:-0.5px}
+.sn em{color:var(--blue);font-style:normal}
+.sl{font-size:11px;color:var(--t3);margin-top:3px;display:block}
+
+.trust{background:var(--bg2);border:0.5px solid var(--line);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.trust-label{font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+.trust-flags{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.flag{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--t2);background:var(--bg3);border:0.5px solid var(--line2);padding:4px 10px;border-radius:6px}
+.flag-icon{font-size:14px}
+
+.proj-wrap{padding:1.5rem 2rem;max-width:680px;margin:0 auto}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:.35rem}
+.stitle{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--t1);margin-bottom:.4rem;letter-spacing:-0.4px}
+.sdesc{font-size:13px;color:var(--t3);margin-bottom:1.5rem}
+
+.plist{display:flex;flex-direction:column;gap:1px;background:var(--line);border-radius:12px;overflow:hidden;border:0.5px solid var(--line)}
+.pcard{background:var(--bg2);cursor:pointer;transition:background .15s;border-left:3px solid transparent}
+.pcard:hover{background:var(--bg3)}
+.pcard.open{border-left-color:var(--blue);background:var(--bg3)}
+.pcard-top{padding:1.25rem 1.25rem .75rem}
+.pcard-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem}
+.pname-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.pname{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--t1)}
+.tag{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:500}
+.tl{background:rgba(74,222,128,0.1);color:var(--green);border:0.5px solid rgba(74,222,128,0.2)}
+.tu{background:var(--blue2);color:var(--blue);border:0.5px solid var(--blue3)}
+.td{background:rgba(192,132,252,0.1);color:var(--purple);border:0.5px solid rgba(192,132,252,0.2)}
+.ts{background:rgba(251,146,60,0.1);color:var(--orange);border:0.5px solid rgba(251,146,60,0.2)}
+.parrow{font-size:18px;color:var(--t3);transition:all .2s;flex-shrink:0}
+.pcard.open .parrow{color:var(--blue);transform:rotate(90deg)}
+.pproblem{font-size:12px;color:var(--t3);font-style:italic;margin-bottom:.5rem}
+.pdesc{font-size:13px;color:var(--t2);line-height:1.65;margin-bottom:.75rem}
+.pmetrics{display:flex;gap:1.2rem;flex-wrap:wrap}
+.pm{font-size:12px}
+.pm strong{color:var(--t1);font-weight:600}
+.pm span{color:var(--t3);margin-left:3px}
+.pdetail{display:none;padding:0 1.25rem 1.25rem;border-top:0.5px solid var(--line)}
+.pcard.open .pdetail{display:block}
+.pdetail-body{font-size:12px;color:var(--t2);line-height:1.7;margin:1rem 0 .8rem}
+.tech-row{display:flex;flex-wrap:wrap;gap:5px}
+.tech{font-size:11px;padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.03);color:var(--t3);border:0.5px solid var(--line);font-family:monospace}
+
+.impact-bar{display:flex;gap:1px;background:var(--line);border-radius:8px;overflow:hidden;margin:1rem 0 0}
+.impact-cell{flex:1;background:var(--bg2);padding:.75rem;text-align:center}
+.ic-n{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--blue)}
+.ic-l{font-size:10px;color:var(--t3);margin-top:2px}
+
+.sk-wrap{padding:1.5rem 2rem;max-width:680px;margin:0 auto}
+.sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:12px;overflow:hidden;border:0.5px solid var(--line);margin-bottom:1px}
+.sg{background:var(--bg2);padding:1.25rem}
+.sg-name{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:.65rem}
+.sg-pills{display:flex;flex-wrap:wrap;gap:5px}
+.pill{font-size:11px;padding:3px 8px;border-radius:5px;background:rgba(255,255,255,0.03);color:var(--t2);border:0.5px solid var(--line);cursor:default;transition:all .15s}
+.pill:hover{background:var(--blue2);color:var(--blue);border-color:var(--blue3)}
+
+.exp-wrap{padding:1.5rem 2rem;max-width:680px;margin:0 auto}
+.timeline{display:flex;flex-direction:column;gap:0}
+.titem{display:flex;gap:1.25rem;padding-bottom:1.75rem;position:relative}
+.titem:last-child{padding-bottom:0}
+.tline{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:20px}
+.tdot{width:10px;height:10px;border-radius:50%;background:var(--blue);border:2px solid var(--bg);flex-shrink:0;margin-top:4px}
+.tbar{flex:1;width:1px;background:var(--line2);margin-top:6px}
+.titem:last-child .tbar{display:none}
+.tcontent{flex:1;padding-bottom:.25rem}
+.ttitle{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--t1);margin-bottom:.15rem}
+.tco{font-size:12px;color:var(--blue);margin-bottom:.15rem}
+.tdate{font-size:11px;color:var(--t3);margin-bottom:.5rem}
+.tdesc{font-size:12px;color:var(--t2);line-height:1.65}
+.thighlights{display:flex;flex-wrap:wrap;gap:5px;margin-top:.5rem}
+.th{font-size:11px;padding:2px 8px;border-radius:4px;background:var(--blue2);color:var(--blue);border:0.5px solid var(--blue3)}
+
+.contact-wrap{padding:1.5rem 2rem;max-width:680px;margin:0 auto}
+.cbox{background:var(--bg2);border:0.5px solid var(--line);border-radius:12px;padding:2rem;text-align:center}
+.ctitle{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:var(--t1);letter-spacing:-0.5px;margin-bottom:.4rem}
+.csub{font-size:13px;color:var(--t3);margin-bottom:.25rem}
+.ctz{font-size:12px;color:var(--t3);margin-bottom:1.75rem;display:flex;align-items:center;justify-content:center;gap:8px}
+.ctz-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+.clinks{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.cl{display:inline-flex;align-items:center;gap:5px;padding:.55rem 1rem;border:0.5px solid var(--line2);border-radius:7px;font-size:12px;color:var(--t2);cursor:pointer;transition:all .15s;font-weight:500}
+.cl:hover{border-color:var(--blue3);color:var(--blue);background:var(--blue2)}
+.cl.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.cl.primary:hover{opacity:.85;color:#fff;background:var(--blue)}
+.open-to{padding-top:1.5rem;border-top:0.5px solid var(--line)}
+.ot-label{font-size:11px;color:var(--t3);margin-bottom:.6rem}
+.ot-tags{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+
+.footer{text-align:center;padding:1.5rem;font-size:11px;color:var(--t3);border-top:0.5px solid var(--line);margin-top:1rem}
+</style>
+
+<div class="root">
+<nav class="nav">
+  <div class="logo" onclick="go('home')">jatin<span>.</span>dev</div>
+  <div class="nav-r">
+    <div class="ntab on" id="n-home" onclick="go('home')">home</div>
+    <div class="ntab" id="n-projects" onclick="go('projects')">projects</div>
+    <div class="ntab" id="n-skills" onclick="go('skills')">skills</div>
+    <div class="ntab" id="n-experience" onclick="go('exp')">experience</div>
+    <div class="nhire" onclick="go('contact')">hire me →</div>
+  </div>
+</nav>
+
+<div class="sec on" id="sec-home">
+  <div class="hero">
+    <div class="avail"><div class="avail-dot"></div>available now · remote · US timezones</div>
+    <h1 class="h1">
+      I ship production<br>systems <span class="blue" id="typed-target">solo.</span>
+    </h1>
+    <p class="tagline">
+      Full Stack Engineer based in India. <strong>Sole engineer on 4 live platforms</strong> for US and international clients — frontend, backend, DevOps, and every integration. No hand-holding needed.
+    </p>
+    <div class="hbtns">
+      <div class="bp" onclick="go('projects')"><i class="ti ti-layout-grid" aria-hidden="true"></i> See my work</div>
+      <div class="bg" onclick="go('contact')"><i class="ti ti-mail" aria-hidden="true"></i> Contact me</div>
+      <div class="bg" onclick="openLink('https://github.com/Jatingupta9120')"><i class="ti ti-brand-github" aria-hidden="true"></i> GitHub</div>
+      <div class="bg" onclick="openLink('https://www.linkedin.com/in/jatin-gupta9120/')"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span class="sn">4<em>+</em></span><span class="sl">live platforms</span></div>
+      <div class="stat"><span class="sn">1k<em>+</em></span><span class="sl">users/event</span></div>
+      <div class="stat"><span class="sn">100k<em>+</em></span><span class="sl">app downloads</span></div>
+      <div class="stat"><span class="sn">$2M<em>+</em></span><span class="sl">trade automated</span></div>
+    </div>
+
+    <div class="trust">
+      <span class="trust-label">clients I've shipped for</span>
+      <div class="trust-flags">
+        <div class="flag"><span class="flag-icon">🇺🇸</span><span>US — Argyle Studio</span></div>
+        <div class="flag"><span class="flag-icon">🇺🇸</span><span>US — Hardscrabble</span></div>
+        <div class="flag"><span class="flag-icon">🇩🇪</span><span>Germany — GFI Platform</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="sec-projects">
+  <div class="proj-wrap">
+    <div class="eyebrow">Work</div>
+    <div class="stitle">4 production platforms shipped</div>
+    <div class="sdesc">Click any project to see the full technical breakdown</div>
+
+    <div class="plist">
+      <div class="pcard" id="pc-0" onclick="toggleP(0)">
+        <div class="pcard-top">
+          <div class="pcard-hdr">
+            <div class="pname-row">
+              <span class="pname">Argyle Studio</span>
+              <span class="tag tl">Live</span>
+              <span class="tag tu">US Client</span>
+              <span class="tag ts">Solo build</span>
+            </div>
+            <span class="parrow">›</span>
+          </div>
+          <p class="pproblem">Client was manually provisioning 6 tools per event with no automation.</p>
+          <p class="pdesc">Virtual event broadcasting platform that auto-provisions live video, CRM, and CMS for 20–40 events/month. JWE-encrypted attendee join flow via AWS Lambda — Salesforce credentials never reach the browser.</p>
+          <div class="pmetrics">
+            <div class="pm"><strong>1,000+</strong><span>concurrent users</span></div>
+            <div class="pm"><strong>sub-100ms</strong><span>WebSocket latency</span></div>
+            <div class="pm"><strong>99.9%</strong><span>uptime</span></div>
+            <div class="pm"><strong>200+</strong><span>events/month</span></div>
+          </div>
+        </div>
+        <div class="pdetail">
+          <div class="pdetail-body">Integrated Daily.co, Salesforce (Apex REST, OAuth2), WordPress, AWS S3/Lambda, and SMTP into one event-creation workflow via Redis/BullMQ queue layer — a Salesforce outage or Daily.co failure never blocks event creation. Built real-time live chat, Q&A, polls, and sponsor tracking over Socket.IO across 3 WebSocket namespaces. Webhook-driven pipeline streams recordings from Daily.co into S3 with idempotent retry handling. Designed secure attendee join flow using JWE-encrypted tokens via AWS Lambda/API Gateway.</div>
+          <div class="tech-row"><span class="tech">NestJS 11</span><span class="tech">Next.js</span><span class="tech">MongoDB Atlas</span><span class="tech">Redis</span><span class="tech">BullMQ</span><span class="tech">Socket.IO</span><span class="tech">WebRTC</span><span class="tech">Daily.co</span><span class="tech">Salesforce</span><span class="tech">AWS Lambda</span><span class="tech">API Gateway</span><span class="tech">JWE</span><span class="tech">Docker</span><span class="tech">GitHub Actions</span></div>
+          <div class="impact-bar">
+            <div class="impact-cell"><div class="ic-n">6+</div><div class="ic-l">integrations</div></div>
+            <div class="impact-cell"><div class="ic-n">3</div><div class="ic-l">WS namespaces</div></div>
+            <div class="impact-cell"><div class="ic-n">0ms</div><div class="ic-l">manual ops/event</div></div>
+            <div class="impact-cell"><div class="ic-n">99.9%</div><div class="ic-l">uptime</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcard" id="pc-1" onclick="toggleP(1)">
+        <div class="pcard-top">
+          <div class="pcard-hdr">
+            <div class="pname-row">
+              <span class="pname">GFI Platform</span>
+              <span class="tag tl">Deployed</span>
+              <span class="tag td">Germany Client</span>
+              <span class="tag ts">Solo build</span>
+            </div>
+            <span class="parrow">›</span>
+          </div>
+          <p class="pproblem">Client managing commercial real estate across disconnected manual systems — no unified view.</p>
+          <p class="pdesc">20-module proptech platform unifying leasing pipeline, renewals, AR/delinquency tracking, and GL financial reporting. MRI Software integration with watermark-based sync and dead-letter queue.</p>
+          <div class="pmetrics">
+            <div class="pm"><strong>20+</strong><span>backend modules</span></div>
+            <div class="pm"><strong>3×</strong><span>faster doc processing</span></div>
+            <div class="pm"><strong>~20</strong><span>MRI API endpoints</span></div>
+          </div>
+        </div>
+        <div class="pdetail">
+          <div class="pdetail-body">Built production-grade MRI Software integration across ~20 API endpoints with incremental watermark-based sync (paginated 1,000 records/batch, every 15 min), exponential backoff/retry, and a dead-letter collection for failed ledger transactions with manual reprocessing endpoint. Full DocuSign e-signature workflow — envelope generation, embedded signing, HMAC-SHA256-verified webhook handler with idempotent event processing. Google Document AI pipeline for automated lease data extraction via async BullMQ jobs. Scheduled daily financial snapshots per active lease.</div>
+          <div class="tech-row"><span class="tech">NestJS</span><span class="tech">MongoDB</span><span class="tech">Redis</span><span class="tech">BullMQ</span><span class="tech">DocuSign</span><span class="tech">MRI Software</span><span class="tech">Google Document AI</span><span class="tech">AWS S3</span><span class="tech">TypeScript</span><span class="tech">Swagger/OpenAPI</span><span class="tech">Winston</span></div>
+          <div class="impact-bar">
+            <div class="impact-cell"><div class="ic-n">~20</div><div class="ic-l">MRI endpoints</div></div>
+            <div class="impact-cell"><div class="ic-n">3×</div><div class="ic-l">faster docs</div></div>
+            <div class="impact-cell"><div class="ic-n">15min</div><div class="ic-l">GL sync cycle</div></div>
+            <div class="impact-cell"><div class="ic-n">100+</div><div class="ic-l">REST endpoints</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcard" id="pc-2" onclick="toggleP(2)">
+        <div class="pcard-top">
+          <div class="pcard-hdr">
+            <div class="pname-row">
+              <span class="pname">Hardscrabble Farms</span>
+              <span class="tag tl">Live</span>
+              <span class="tag tu">US Client</span>
+              <span class="tag ts">Solo build</span>
+            </div>
+            <span class="parrow">›</span>
+          </div>
+          <p class="pproblem">Wholesale nursery taking B2B orders over phone and email — no digital system, no Salesforce connection.</p>
+          <p class="pdesc">Full stack B2B wholesale ordering portal with bidirectional Salesforce sync. Collaborated directly with client's Salesforce team on Apex REST contract design. MongoDB multi-document transactions ensure zero partial-order risk.</p>
+          <div class="pmetrics">
+            <div class="pm"><strong>Bidirectional</strong><span>Salesforce sync</span></div>
+            <div class="pm"><strong>Zero</strong><span>partial-order risk</span></div>
+            <div class="pm"><strong>Full</strong><span>order lifecycle</span></div>
+          </div>
+        </div>
+        <div class="pdetail">
+          <div class="pdetail-body">Outbound sync: orders, customer profiles, and addresses via OAuth2 client-credentials flow. Inbound: product catalog bulk ingest via API-key-protected endpoints. Collaborated directly with client's Salesforce team on Apex REST contract design and field mapping. Full order lifecycle with MongoDB multi-document transactions: catalog browse → persistent cart → draft-order management → pickup/delivery placement → admin confirmation. JWT RBAC (Admin/Customer roles), Nodemailer transactional email, full AWS deployment — every layer owned solo.</div>
+          <div class="tech-row"><span class="tech">Next.js 16</span><span class="tech">React 19</span><span class="tech">NestJS 11</span><span class="tech">MongoDB</span><span class="tech">Mongoose</span><span class="tech">Salesforce Apex REST</span><span class="tech">OAuth2</span><span class="tech">TypeScript</span><span class="tech">Tailwind CSS</span><span class="tech">TanStack Query</span><span class="tech">Zustand</span><span class="tech">AWS</span><span class="tech">Docker</span></div>
+          <div class="impact-bar">
+            <div class="impact-cell"><div class="ic-n">2-way</div><div class="ic-l">Salesforce sync</div></div>
+            <div class="impact-cell"><div class="ic-n">0</div><div class="ic-l">partial orders</div></div>
+            <div class="impact-cell"><div class="ic-n">Solo</div><div class="ic-l">full stack</div></div>
+            <div class="impact-cell"><div class="ic-n">Live</div><div class="ic-l">in production</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcard" id="pc-3" onclick="toggleP(3)">
+        <div class="pcard-top">
+          <div class="pcard-hdr">
+            <div class="pname-row">
+              <span class="pname">CricRadio</span>
+              <span class="tag tl">Live</span>
+              <span class="tag ts">100K+ downloads</span>
+            </div>
+            <span class="parrow">›</span>
+          </div>
+          <p class="pproblem">APIs averaging 800ms under live match traffic — system couldn't scale to 10K+ daily users.</p>
+          <p class="pdesc">Real-time cricket platform. Led full Express.js → NestJS migration, cut API response 50% (800ms → 400ms), DB load 35%. Scaled to 100K+ Play Store downloads, 10K+ daily users, 99.5% uptime.</p>
+          <div class="pmetrics">
+            <div class="pm"><strong>100K+</strong><span>Play Store downloads</span></div>
+            <div class="pm"><strong>10K+</strong><span>daily users</span></div>
+            <div class="pm"><strong>500×</strong><span>API improvement (Redis)</span></div>
+          </div>
+        </div>
+        <div class="pdetail">
+          <div class="pdetail-body">Led full codebase migration from Express.js monolith to NestJS — refactoring every module, middleware, and service. Redis caching cut sector API response from 5s to 10ms (500× improvement). DB load reduced 35% through indexing and query optimization. AWS S3 pre-signed URL upload pipeline built from scratch. GitHub Actions CI/CD cut deploy time 40% (45min → 27min). Grafana and Prometheus monitoring with 99.5% uptime SLA. Fixed cross-service data inconsistencies causing user-facing bugs at scale.</div>
+          <div class="tech-row"><span class="tech">NestJS</span><span class="tech">Express.js</span><span class="tech">Node.js</span><span class="tech">Redis</span><span class="tech">MongoDB</span><span class="tech">AWS EC2</span><span class="tech">S3</span><span class="tech">GitHub Actions</span><span class="tech">Grafana</span><span class="tech">Prometheus</span><span class="tech">PM2</span></div>
+          <div class="impact-bar">
+            <div class="impact-cell"><div class="ic-n">100K+</div><div class="ic-l">downloads</div></div>
+            <div class="impact-cell"><div class="ic-n">500×</div><div class="ic-l">Redis speedup</div></div>
+            <div class="impact-cell"><div class="ic-n">−40%</div><div class="ic-l">deploy time</div></div>
+            <div class="impact-cell"><div class="ic-n">99.5%</div><div class="ic-l">uptime</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="sec-skills">
+  <div class="sk-wrap">
+    <div class="eyebrow">Skills</div>
+    <div class="stitle">The full stack</div>
+    <div class="sdesc">Hover any skill to highlight it</div>
+    <div class="sk-grid">
+      <div class="sg"><div class="sg-name">Frontend</div><div class="sg-pills"><span class="pill">React.js</span><span class="pill">Next.js 16</span><span class="pill">TypeScript</span><span class="pill">JavaScript</span><span class="pill">Tailwind CSS</span><span class="pill">Redux Toolkit</span><span class="pill">TanStack Query</span><span class="pill">Zustand</span><span class="pill">Framer Motion</span><span class="pill">React Hook Form</span><span class="pill">Zod</span></div></div>
+      <div class="sg"><div class="sg-name">Backend</div><div class="sg-pills"><span class="pill">Node.js</span><span class="pill">NestJS 11</span><span class="pill">Express.js</span><span class="pill">TypeScript</span><span class="pill">Golang</span><span class="pill">REST APIs</span><span class="pill">WebSockets</span><span class="pill">Socket.IO</span><span class="pill">WebRTC</span><span class="pill">BullMQ</span><span class="pill">OpenAPI/Swagger</span></div></div>
+      <div class="sg"><div class="sg-name">Cloud & DevOps</div><div class="sg-pills"><span class="pill">AWS EC2</span><span class="pill">S3</span><span class="pill">Lambda</span><span class="pill">API Gateway</span><span class="pill">RDS</span><span class="pill">CloudWatch</span><span class="pill">Docker</span><span class="pill">Kubernetes</span><span class="pill">GitHub Actions</span><span class="pill">Nginx</span><span class="pill">PM2</span></div></div>
+      <div class="sg"><div class="sg-name">Data & Integrations</div><div class="sg-pills"><span class="pill">MongoDB</span><span class="pill">PostgreSQL</span><span class="pill">Redis</span><span class="pill">Mongoose</span><span class="pill">Sequelize</span><span class="pill">Salesforce Apex</span><span class="pill">DocuSign</span><span class="pill">MRI Software</span><span class="pill">Google Document AI</span><span class="pill">Microsoft Graph</span><span class="pill">OAuth2</span><span class="pill">JWE</span></div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1px;background:var(--line);border-radius:0 0 12px 12px;overflow:hidden;margin-top:1px;border:0.5px solid var(--line)">
+      <div class="sg"><div class="sg-name">Monitoring & AI tools</div><div class="sg-pills"><span class="pill">Grafana</span><span class="pill">Prometheus</span><span class="pill">Winston</span><span class="pill">GitHub Copilot</span><span class="pill">Cursor AI</span><span class="pill">New Relic</span><span class="pill">Jest</span><span class="pill">Postman</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="sec-exp">
+  <div class="exp-wrap">
+    <div class="eyebrow">Experience</div>
+    <div class="stitle">Career timeline</div>
+    <div class="timeline">
+      <div class="titem">
+        <div class="tline"><div class="tdot" style="background:var(--blue)"></div><div class="tbar"></div></div>
+        <div class="tcontent">
+          <div class="ttitle">Software Engineer — Full Stack (Remote)</div>
+          <div class="tco">MelonLeaf Consulting</div>
+          <div class="tdate">Sep 2025 – Present · Gurugram, India (Remote)</div>
+          <div class="tdesc">Sole engineer on 3 simultaneous production platforms for US and Germany-based clients. Full ownership: architecture, frontend, backend, DevOps, and all third-party integrations. Working async across US timezones with zero hand-holding.</div>
+          <div class="thighlights"><span class="th">Argyle Studio</span><span class="th">GFI Platform</span><span class="th">Hardscrabble</span><span class="th">US + Germany clients</span></div>
+        </div>
+      </div>
+      <div class="titem">
+        <div class="tline"><div class="tdot" style="background:var(--blue)"></div><div class="tbar"></div></div>
+        <div class="tcontent">
+          <div class="ttitle">Software Engineer — Full Stack</div>
+          <div class="tco">Lifease Solutions LLP</div>
+          <div class="tdate">Dec 2024 – Sep 2025 · Noida, India</div>
+          <div class="tdesc">Led Express.js → NestJS full codebase migration. Cut API response 50% (800ms → 400ms). Scaled CricRadio to 100K+ Play Store downloads and 10K+ daily users. Built AWS S3 pipeline and GitHub Actions CI/CD.</div>
+          <div class="thighlights"><span class="th">CricRadio</span><span class="th">−50% API latency</span><span class="th">100K+ downloads</span><span class="th">99.5% uptime</span></div>
+        </div>
+      </div>
+      <div class="titem">
+        <div class="tline"><div class="tdot" style="background:var(--t3)"></div><div class="tbar"></div></div>
+        <div class="tcontent">
+          <div class="ttitle">Software Engineer Trainee — Backend</div>
+          <div class="tco">Big Oh Tech (OPC) Pvt Ltd</div>
+          <div class="tdate">May 2024 – Sep 2024 · Noida, India</div>
+          <div class="tdesc">Built NestJS APIs for gas and energy trading automating $2M+ IGX-LDC contracts. Redis caching cut sector API from 5s to 10ms — 500× improvement.</div>
+          <div class="thighlights"><span class="th">$2M+ trade volume</span><span class="th">500× Redis speedup</span><span class="th">GitHub Actions CI/CD</span></div>
+        </div>
+      </div>
+      <div class="titem">
+        <div class="tline"><div class="tdot" style="background:var(--t3)"></div></div>
+        <div class="tcontent">
+          <div class="ttitle">B.Tech — Computer Science</div>
+          <div class="tco">ABES Engineering College</div>
+          <div class="tdate">2020 – 2024 · India</div>
+          <div class="tdesc">500+ DSA problems solved on LeetCode and GFG. Strong foundation in algorithms, system design, data structures, and distributed systems.</div>
+          <div class="thighlights"><span class="th">500+ LeetCode</span><span class="th">System design</span><span class="th">DSA</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="sec-contact">
+  <div class="contact-wrap">
+    <div class="cbox">
+      <div class="avail" style="display:inline-flex;margin-bottom:1.25rem"><div class="avail-dot"></div>available for remote work — immediate joiner</div>
+      <div class="ctitle">Let's build something great.</div>
+      <div class="csub">Based in India · Sole engineer on 3 live US/Germany client platforms</div>
+      <div class="ctz"><div class="ctz-dot"></div>Available EST (8am–6pm) and PST (8am–6pm)</div>
+      <div class="clinks">
+        <div class="cl primary" onclick="openLink('mailto:jatin.gupta.engineer@gmail.com')"><i class="ti ti-mail" aria-hidden="true"></i> jatin.gupta.engineer@gmail.com</div>
+      </div>
+      <div class="clinks">
+        <div class="cl" onclick="openLink('https://www.linkedin.com/in/jatin-gupta9120/')"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</div>
+        <div class="cl" onclick="openLink('https://github.com/Jatingupta9120')"><i class="ti ti-brand-github" aria-hidden="true"></i> GitHub</div>
+        <div class="cl" onclick="openLink('https://leetcode.com/u/jatingupta9120/')"><i class="ti ti-code" aria-hidden="true"></i> LeetCode</div>
+      </div>
+      <div class="open-to">
+        <div class="ot-label">what I'm open to</div>
+        <div class="ot-tags">
+          <span class="tag tu">Full-time remote</span>
+          <span class="tag tu">Contract / freelance</span>
+          <span class="tag tl">US-based startups</span>
+          <span class="tag ts">Full stack roles</span>
+          <span class="tag td">Senior engineer roles</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:1rem;background:var(--bg2);border:0.5px solid var(--line);border-radius:12px;padding:1.25rem">
+      <div style="font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:.75rem">why hire me remotely</div>
+      <div style="display:flex;flex-direction:column;gap:.6rem">
+        <div style="display:flex;gap:.75rem;align-items:flex-start">
+          <i class="ti ti-check" style="color:var(--green);font-size:14px;margin-top:2px;flex-shrink:0" aria-hidden="true"></i>
+          <span style="font-size:13px;color:var(--t2)">Currently delivering 3 live production platforms for US and Germany clients — proven async remote work</span>
+        </div>
+        <div style="display:flex;gap:.75rem;align-items:flex-start">
+          <i class="ti ti-check" style="color:var(--green);font-size:14px;margin-top:2px;flex-shrink:0" aria-hidden="true"></i>
+          <span style="font-size:13px;color:var(--t2)">Sole engineer on every project — no supervision needed, no tickets required to start</span>
+        </div>
+        <div style="display:flex;gap:.75rem;align-items:flex-start">
+          <i class="ti ti-check" style="color:var(--green);font-size:14px;margin-top:2px;flex-shrink:0" aria-hidden="true"></i>
+          <span style="font-size:13px;color:var(--t2)">Collaborates directly with client teams (Salesforce, product) — not just with internal engineers</span>
+        </div>
+        <div style="display:flex;gap:.75rem;align-items:flex-start">
+          <i class="ti ti-check" style="color:var(--green);font-size:14px;margin-top:2px;flex-shrink:0" aria-hidden="true"></i>
+          <span style="font-size:13px;color:var(--t2)">Ships frontend, backend, DevOps, and integrations — one engineer, full product</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">jatin.dev · built to ship · India → world</div>
+</div>
+
+<script>
+var tabs=['home','projects','skills','exp','contact'];
+function go(id){
+  tabs.forEach(function(t){
+    var s=document.getElementById('sec-'+t);
+    var n=document.getElementById('n-'+t);
+    if(t===id){s.classList.add('on');if(n)n.classList.add('on')}
+    else{s.classList.remove('on');if(n)n.classList.remove('on')}
+  });
+}
+function toggleP(i){
+  var c=document.getElementById('pc-'+i);
+  var isOpen=c.classList.contains('open');
+  [0,1,2,3].forEach(function(j){document.getElementById('pc-'+j).classList.remove('open')});
+  if(!isOpen)c.classList.add('open');
+}
+var words=['solo.','end-to-end.','for US clients.','without tickets.'];
+var wi=0,ci=0,del=false;
+var el=document.getElementById('typed-target');
+function type(){
+  var w=words[wi];
+  if(!del){
+    el.textContent=w.slice(0,ci+1);
+    ci++;
+    if(ci===w.length){del=true;setTimeout(type,1800);return}
+  } else {
+    el.textContent=w.slice(0,ci-1);
+    ci--;
+    if(ci===0){del=false;wi=(wi+1)%words.length}
+  }
+  setTimeout(type,del?55:95);
+}
+setTimeout(type,1200);
+</script>
