@@ -57,6 +57,9 @@
   .field{width:100%;background:transparent;border:none;border-bottom:1px solid var(--line);padding:10px 2px;font-size:14px;color:var(--ink);font-family:'Geist',sans-serif;outline:none}
   .field::placeholder{color:var(--ink-3)}
   .field:focus{border-color:var(--accent)}
+  #hero-cursor{animation:hero-blink 1s step-end infinite}
+  @media(prefers-reduced-motion:reduce){#hero-cursor{animation:none}}
+  @keyframes hero-blink{0%,100%{opacity:1}50%{opacity:0}}
   @media(max-width:760px){
     .grid-2{grid-template-columns:1fr !important}
     .grid-proj{grid-template-columns:56px 1fr !important}
@@ -92,10 +95,10 @@
   <div id="top" class="wrap" style="padding-top:96px;padding-bottom:64px">
     <div class="eyebrow" style="display:flex;align-items:center;gap:8px">
       <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block"></span>
-      Available now · Remote · US timezones
+      Contract / freelance — available now · Full-time — 30-day notice
     </div>
     <h1 class="hero-h1" style="font-family:'Geist',sans-serif;font-weight:700;font-size:clamp(34px,5.5vw,62px);line-height:1.06;letter-spacing:-1.5px;color:var(--ink);margin:20px 0 0;max-width:780px">
-      I ship production systems, <span style="color:var(--accent-ink)">solo.</span>
+      I ship production systems, <span id="hero-rotate" style="color:var(--accent-ink);display:inline-block"></span><span id="hero-cursor" style="color:var(--accent-ink);font-weight:400">|</span>
     </h1>
     <p style="font-size:18px;line-height:1.65;color:var(--ink-2);max-width:600px;margin:24px 0 0">
       Full-stack engineer based in India. Sole engineer on 5 live platforms for US and international clients — frontend, backend, DevOps, and every integration. No hand-holding needed.
@@ -105,7 +108,7 @@
         See the work
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
       </a>
-      <a class="btn-secondary" href="mailto:jatin.gupta.engineer@gmail.com">Email me</a>
+      <a class="btn-secondary mailto-copy" href="mailto:jatin.gupta.engineer@gmail.com">Email me</a>
     </div>
   </div>
 
@@ -276,6 +279,9 @@
             <span class="mono" style="font-size:13px;color:var(--ink)"><strong>500×</strong> <span style="color:var(--ink-3);font-weight:400">API speedup via Redis</span></span>
           </div>
           <p class="mono" style="font-size:12px;color:var(--ink-3);margin-top:16px;line-height:1.9">NestJS · Express.js · Node.js · Redis · MongoDB · AWS EC2 · S3 · GitHub Actions · Grafana · Prometheus · PM2</p>
+          <div style="display:flex;gap:20px;margin-top:16px">
+            <a class="plink" href="http://cricradio.com/" target="_blank" rel="noopener">Live site ↗</a>
+          </div>
         </div>
       </div>
 
@@ -373,6 +379,9 @@
             <li>Built monitoring infrastructure processing 20GB+ logs daily with 99.5% system availability.</li>
           </ul>
           <p class="mono" style="font-size:12px;color:var(--ink-3);margin-top:18px;line-height:1.9">NestJS · Node.js · React · Next.js · TypeScript · PostgreSQL · MongoDB · Redis · WebSockets · Express.js</p>
+          <div style="margin-top:12px">
+            <a class="plink" href="http://cricradio.com/" target="_blank" rel="noopener">Live site ↗</a>
+          </div>
         </div>
       </div>
 
@@ -386,11 +395,23 @@
         <div>
           <div style="font-weight:600;font-size:16px;color:var(--ink)">Software Engineer Trainee — Backend Developer</div>
           <div class="mono" style="font-size:12.5px;color:var(--accent-ink);margin-top:4px"><a href="https://www.linkedin.com/company/bigohtech/posts/?feedView=all" target="_blank" rel="noopener" style="color:inherit">Big Oh Tech (OPC) Pvt Ltd</a> · Full-time</div>
-          <ul style="margin:14px 0 0;padding-left:18px;color:var(--ink-2);font-size:14px;line-height:1.75">
-            <li>Contributed to multiple projects building RESTful APIs with NestJS (Node.js), Sequelize (ORM), PL/SQL, MySQL, MongoDB, Redis, and Kafka — building scalable, efficient backend systems with high performance and reliability.</li>
-            <li>Achieved a 37% efficiency boost by architecting and implementing a new API for streamlined project data retrieval, significantly reducing database calls.</li>
-          </ul>
-          <p class="mono" style="font-size:12px;color:var(--ink-3);margin-top:18px;line-height:1.9">NestJS · Sequelize · PL/SQL · MySQL · MongoDB · Redis · Kafka · TypeScript · JavaScript</p>
+
+          <div style="margin-top:20px">
+            <div style="font-weight:600;font-size:14px;color:var(--ink)">IGX — Trading Contract &amp; Financial-Limits Platform</div>
+            <ul style="margin:8px 0 0;padding-left:18px;color:var(--ink-2);font-size:14px;line-height:1.75">
+              <li>Built the backend for IGX from scratch with NestJS, TypeScript, and Sequelize — a platform for managing trading contracts and per-client financial/margin limits.</li>
+              <li>Designed the contract lifecycle module: relational schema across contract type, delivery point, market schedule, and segment, with deterministic contract naming and coding logic derived from contract attributes.</li>
+              <li>Engineered CSV bulk-ingestion pipelines for both contracts and financial limits — streaming parse, row-level validation against reference tables, duplicate detection, and bulk upsert.</li>
+              <li>Built a generic, type-safe repository abstraction over Sequelize (find/create/update/delete + pagination) reused across every module, plus a standardized response/error contract enforced via a global exception filter.</li>
+              <li>Integrated Redis (ioredis) caching, Winston logging with daily rotation, and an Axios-based service-gateway for internal microservice calls; set up environment-scoped Sequelize migrations and CI hygiene (ESLint, Husky, commitlint, SonarQube).</li>
+              <li>Achieved a 37% efficiency boost by architecting and implementing a new API for streamlined project data retrieval, significantly reducing database calls.</li>
+            </ul>
+            <div style="margin-top:12px">
+              <a class="plink" href="https://exchange.igxindia.com/web/market-data-daily" target="_blank" rel="noopener">Live site ↗</a>
+            </div>
+          </div>
+
+          <p class="mono" style="font-size:12px;color:var(--ink-3);margin-top:18px;line-height:1.9">NestJS · Sequelize · PL/SQL · MySQL · MongoDB · Redis · Kafka · Winston · Axios · TypeScript · JavaScript</p>
         </div>
       </div>
 
@@ -449,12 +470,13 @@
   <div id="contact" class="wrap" style="padding:112px 0 64px">
     <div class="eyebrow" style="display:flex;align-items:center;gap:8px">
       <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block"></span>
-      Available for remote work — immediate joiner
+      Available for remote work — contract/freelance now, full-time 30-day notice
     </div>
     <div class="contact-title" style="font-family:'Geist',sans-serif;font-weight:700;font-size:44px;letter-spacing:-1px;color:var(--ink);margin-top:16px">Let's build something.</div>
     <p style="font-size:15px;color:var(--ink-2);margin-top:12px">Based in India · Sole engineer on 3 live US/Germany client platforms · responds within 4 hours, EST/PST business hours.</p>
 
-    <a href="mailto:jatin.gupta.engineer@gmail.com" style="display:inline-block;font-size:21px;font-weight:600;color:var(--accent-ink);margin-top:28px;border-bottom:1px solid var(--line);padding-bottom:4px">jatin.gupta.engineer@gmail.com</a>
+    <a href="mailto:jatin.gupta.engineer@gmail.com" class="mailto-copy" style="display:inline-block;font-size:21px;font-weight:600;color:var(--accent-ink);margin-top:28px;border-bottom:1px solid var(--line);padding-bottom:4px">jatin.gupta.engineer@gmail.com</a>
+    <span id="mailto-toast" style="display:inline-block;margin-left:10px;font-size:13px;color:var(--ink-3);opacity:0;transition:opacity .2s">Copied to clipboard</span>
 
     <div style="display:flex;gap:24px;margin-top:20px">
       <a class="navlink" href="https://www.linkedin.com/in/jatin-gupta9120/" target="_blank" rel="noopener">LinkedIn</a>
@@ -464,15 +486,21 @@
 
     <div style="margin-top:44px;padding-top:24px;border-top:1px solid var(--line)">
       <div class="mono" style="font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.6px">What I'm open to</div>
-      <p style="font-size:14.5px;color:var(--ink-2);margin-top:10px">Full-time remote · Contract / freelance · US-based startups · Full stack roles · Senior engineer roles</p>
+      <p style="font-size:14.5px;color:var(--ink-2);margin-top:10px">Contract / freelance — available immediately · Full-time remote — 30-day notice · US-based startups · Full stack roles · Senior engineer roles</p>
     </div>
 
     <div style="max-width:440px;margin-top:56px">
       <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:16px">Send a message — I'll reply within 4 hours</div>
-      <input class="field" type="text" placeholder="Your name" style="margin-bottom:18px">
-      <input class="field" type="email" placeholder="your@email.com" style="margin-bottom:18px">
-      <textarea class="field" placeholder="Tell me about the role or project..." rows="3" style="margin-bottom:22px;resize:vertical"></textarea>
-      <button style="background:var(--accent-ink);color:var(--bg);border:none;padding:12px 24px;border-radius:8px;font-weight:500;font-size:14px;font-family:'Geist',sans-serif;cursor:pointer">Send message</button>
+      <form id="contact-form">
+        <input type="hidden" name="access_key" value="2fc0db43-9c04-43fa-bc11-01cadd140a15">
+        <input type="hidden" name="subject" value="New message from Portfolio contact form">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <input class="field" type="text" name="name" placeholder="Your name" required style="margin-bottom:18px">
+        <input class="field" type="email" name="email" placeholder="your@email.com" required style="margin-bottom:18px">
+        <textarea class="field" name="message" placeholder="Tell me about the role or project..." rows="3" required style="margin-bottom:22px;resize:vertical"></textarea>
+        <button id="contact-submit" type="submit" style="background:var(--accent-ink);color:var(--bg);border:none;padding:12px 24px;border-radius:8px;font-weight:500;font-size:14px;font-family:'Geist',sans-serif;cursor:pointer">Send message</button>
+        <div id="contact-status" style="font-size:13.5px;margin-top:14px"></div>
+      </form>
     </div>
   </div>
 
@@ -485,6 +513,95 @@
 </div>
 
 <script>
+(function(){
+  var links = document.querySelectorAll('a.mailto-copy');
+  var toast = document.getElementById('mailto-toast');
+  links.forEach(function(link){
+    link.addEventListener('click', function(){
+      var email = link.href.replace('mailto:', '').split('?')[0];
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(function(){
+          if (toast) {
+            toast.style.opacity = '1';
+            setTimeout(function(){ toast.style.opacity = '0'; }, 2000);
+          }
+        }).catch(function(){});
+      }
+    });
+  });
+})();
+(function(){
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var btn = document.getElementById('contact-submit');
+  var status = document.getElementById('contact-status');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var data = Object.fromEntries(new FormData(form));
+    if (data.botcheck) return;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    status.textContent = '';
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then(function(res){ return res.json(); })
+      .then(function(json){
+        if (json.success) {
+          status.style.color = 'var(--accent-ink)';
+          status.textContent = "Message sent — I'll reply within 4 hours.";
+          form.reset();
+        } else {
+          throw new Error(json.message || 'Something went wrong');
+        }
+      })
+      .catch(function(){
+        status.style.color = '#c0392b';
+        status.textContent = 'Could not send — please email me directly instead.';
+      })
+      .finally(function(){
+        btn.disabled = false;
+        btn.textContent = 'Send message';
+      });
+  });
+})();
+(function(){
+  var el = document.getElementById('hero-rotate');
+  var phrases = ['solo.', 'end-to-end.', 'worldwide.', 'on deadline.', 'no hand-holding needed.'];
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!el) return;
+  if (reduced) {
+    el.textContent = phrases[0];
+    return;
+  }
+  var pi = 0, ci = 0, deleting = false;
+  function tick(){
+    var word = phrases[pi];
+    if (!deleting) {
+      ci++;
+      el.textContent = word.slice(0, ci);
+      if (ci === word.length) {
+        deleting = true;
+        setTimeout(tick, 1600);
+        return;
+      }
+      setTimeout(tick, 65);
+    } else {
+      ci--;
+      el.textContent = word.slice(0, ci);
+      if (ci === 0) {
+        deleting = false;
+        pi = (pi + 1) % phrases.length;
+        setTimeout(tick, 300);
+        return;
+      }
+      setTimeout(tick, 35);
+    }
+  }
+  tick();
+})();
 (function(){
   var root = document.documentElement;
   var btn = document.getElementById('theme-toggle');
