@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jatin Gupta — Full Stack Engineer</title>
-<meta name="description" content="Full Stack Engineer. Sole engineer on 4 production platforms for US and international clients. Available for remote roles.">
+<meta name="description" content="Full Stack Engineer. Sole engineer on 5 production platforms for US and international clients. Available for remote roles.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,9 @@ a{text-decoration:none;color:inherit}
 .nav-r{display:flex;gap:.5rem;align-items:center}
 .ntab{font-size:12px;color:var(--t3);cursor:pointer;padding:5px 10px;border-radius:6px;transition:all .15s;border:0.5px solid transparent}
 .ntab:hover{color:var(--t1);background:var(--bg3)}
+.ntab{position:relative}
 .ntab.on{color:var(--t1);background:var(--bg3);border-color:var(--line2)}
+.ntab.on::after{content:'';position:absolute;left:10px;right:10px;bottom:-1px;height:2px;border-radius:2px;background:var(--blue)}
 .nhire{font-size:12px;padding:5px 14px;border-radius:6px;background:var(--blue);color:#fff;cursor:pointer;transition:opacity .15s;font-weight:500;border:none}
 .nhire:hover{opacity:.85}
 .sec{display:none;animation:fadeIn .2s ease}
@@ -36,14 +38,16 @@ a{text-decoration:none;color:inherit}
 .avail{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--green);border:0.5px solid rgba(74,222,128,0.2);padding:4px 12px;border-radius:100px;margin-bottom:.9rem;background:rgba(74,222,128,0.05)}
 .avail-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
 .h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;line-height:1.08;letter-spacing:-1px;color:var(--t1);margin-bottom:.6rem}
-.h1 .blue{color:var(--blue)}
+.h1 .blue{background:linear-gradient(90deg,var(--blue),#9dc3ff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .tagline{font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:1.25rem}
 .tagline strong{color:var(--t1);font-weight:500}
 .hbtns{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
 .bp{display:inline-flex;align-items:center;gap:5px;padding:.5rem 1rem;background:var(--blue);color:#fff;font-size:12px;font-weight:500;border-radius:7px;cursor:pointer;border:none;transition:opacity .15s;text-decoration:none}
-.bp:hover{opacity:.85}
+.bp{transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease}
+.bp:hover{opacity:1;transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(79,142,247,.6)}
 .bg{display:inline-flex;align-items:center;gap:5px;padding:.5rem 1rem;background:transparent;color:var(--t2);font-size:12px;border-radius:7px;border:0.5px solid var(--line2);cursor:pointer;transition:all .15s;text-decoration:none}
-.bg:hover{border-color:rgba(255,255,255,0.25);color:var(--t1)}
+.bg{transition:transform .18s ease,border-color .18s ease,color .18s ease,background .18s ease}
+.bg:hover{border-color:rgba(255,255,255,0.25);color:var(--t1);transform:translateY(-2px)}
 .bg.dl{border-color:var(--blue3);color:var(--blue)}
 .bg.dl:hover{background:var(--blue2)}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-radius:12px;overflow:hidden;border:0.5px solid var(--line);margin-bottom:1.5rem}
@@ -70,7 +74,8 @@ a{text-decoration:none;color:inherit}
 .sdesc{font-size:13px;color:var(--t3);margin-bottom:1.5rem}
 .plist{display:flex;flex-direction:column;gap:1px;background:var(--line);border-radius:12px;overflow:hidden;border:0.5px solid var(--line)}
 .pcard{background:var(--bg2);cursor:pointer;transition:background .15s;border-left:3px solid transparent}
-.pcard:hover{background:var(--bg3)}
+.pcard{transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
+.pcard:hover{background:var(--bg3);transform:translateY(-2px);box-shadow:0 16px 34px -20px rgba(0,0,0,.6)}
 .pcard.open{border-left-color:var(--blue);background:var(--bg3)}
 .pcard-top{padding:1.25rem 1.25rem .75rem}
 .pcard-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem}
@@ -89,8 +94,10 @@ a{text-decoration:none;color:inherit}
 .pm{font-size:12px}
 .pm strong{color:var(--t1);font-weight:600}
 .pm span{color:var(--t3);margin-left:3px}
-.pdetail{display:none;padding:0 1.25rem 1.25rem;border-top:0.5px solid var(--line)}
-.pcard.open .pdetail{display:block}
+.pdetail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.4,0,.2,1)}
+.pdetail-inner{overflow:hidden;padding:0 1.25rem 1.25rem;border-top:0.5px solid transparent;transition:border-color .3s ease .05s}
+.pcard.open .pdetail{grid-template-rows:1fr}
+.pcard.open .pdetail-inner{border-top-color:var(--line)}
 .pdetail-body{font-size:12px;color:var(--t2);line-height:1.7;margin:1rem 0 .8rem}
 .tech-row{display:flex;flex-wrap:wrap;gap:5px}
 .tech{font-size:11px;padding:3px 8px;border-radius:4px;background:rgba(255,255,255,0.03);color:var(--t3);border:0.5px solid var(--line);font-family:monospace}
@@ -152,6 +159,26 @@ a{text-decoration:none;color:inherit}
 .why-item:last-child{margin-bottom:0}
 .why-item span{font-size:13px;color:var(--t2)}
 .footer{text-align:center;padding:1.5rem;font-size:11px;color:var(--t3);border-top:0.5px solid var(--line);margin-top:1rem}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(650px circle at 12% -10%,rgba(79,142,247,0.14),transparent 60%),radial-gradient(500px circle at 92% 8%,rgba(192,132,252,0.09),transparent 55%);pointer-events:none;z-index:0}
+.nav,.sec{position:relative;z-index:1}
+.pfp{box-shadow:0 0 0 1px var(--line2),0 12px 34px -12px rgba(79,142,247,.5)}
+.pill{transition:transform .18s ease,background .15s ease,color .15s ease,border-color .15s ease}
+.pill:hover{transform:translateY(-1px)}
+.writing-card{transition:background .2s ease,transform .2s ease,border-color .2s ease}
+.writing-card:hover{transform:translateX(4px)}
+.cl{transition:transform .18s ease,border-color .15s ease,color .15s ease,background .15s ease}
+.cl:hover{transform:translateY(-2px)}
+.cform-submit{transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease}
+.cform-submit:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(79,142,247,.6)}
+.stat{transition:transform .2s ease,background .15s ease}
+.stat:hover{transform:translateY(-3px)}
+@keyframes cardIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.pcard,.sg,.titem,.writing-card,.stats .stat{animation:cardIn .5s ease both}
+.plist .pcard:nth-child(1),.stats .stat:nth-child(1),.sk-grid .sg:nth-child(1),.timeline .titem:nth-child(1){animation-delay:.03s}
+.plist .pcard:nth-child(2),.stats .stat:nth-child(2),.sk-grid .sg:nth-child(2),.timeline .titem:nth-child(2){animation-delay:.09s}
+.plist .pcard:nth-child(3),.stats .stat:nth-child(3),.sk-grid .sg:nth-child(3),.timeline .titem:nth-child(3){animation-delay:.15s}
+.plist .pcard:nth-child(4),.stats .stat:nth-child(4),.sk-grid .sg:nth-child(4),.timeline .titem:nth-child(4){animation-delay:.21s}
+.plist .pcard:nth-child(5){animation-delay:.27s}
 @media(max-width:600px){
   .nav{padding:.75rem 1rem}
   .ntab{display:none}
@@ -186,7 +213,7 @@ a{text-decoration:none;color:inherit}
       <div class="hero-text">
         <div class="avail"><div class="avail-dot"></div>available now · remote · US timezones</div>
         <h1 class="h1">I ship production<br>systems <span class="blue" id="typed-target">solo.</span></h1>
-        <p class="tagline">Full Stack Engineer based in India. <strong>Sole engineer on 4 live platforms</strong> for US and international clients — frontend, backend, DevOps, and every integration. No hand-holding needed.</p>
+        <p class="tagline">Full Stack Engineer based in India. <strong>Sole engineer on 5 live platforms</strong> for US and international clients — frontend, backend, DevOps, and every integration. No hand-holding needed.</p>
       </div>
     </div>
     <div class="hbtns">
@@ -197,10 +224,10 @@ a{text-decoration:none;color:inherit}
       <a class="bg" href="https://www.linkedin.com/in/jatin-gupta9120/" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
     </div>
     <div class="stats">
-      <div class="stat"><span class="sn">4<em>+</em></span><span class="sl">live platforms</span></div>
-      <div class="stat"><span class="sn">1k<em>+</em></span><span class="sl">users/event</span></div>
-      <div class="stat"><span class="sn">100k<em>+</em></span><span class="sl">app downloads</span></div>
-      <div class="stat"><span class="sn">$2M<em>+</em></span><span class="sl">trade automated</span></div>
+      <div class="stat"><span class="sn"><span class="sn-num" data-target="5" data-suffix="">5</span><em>+</em></span><span class="sl">live platforms</span></div>
+      <div class="stat"><span class="sn"><span class="sn-num" data-target="1000" data-suffix="k">1k</span><em>+</em></span><span class="sl">users/event</span></div>
+      <div class="stat"><span class="sn"><span class="sn-num" data-target="100000" data-suffix="k">100k</span><em>+</em></span><span class="sl">app downloads</span></div>
+      <div class="stat"><span class="sn"><span class="sn-num" data-target="2000000" data-prefix="$" data-suffix="M">$2M</span><em>+</em></span><span class="sl">trade automated</span></div>
     </div>
     <div class="trust">
       <span class="trust-label">shipped for</span>
@@ -208,6 +235,7 @@ a{text-decoration:none;color:inherit}
         <div class="flag"><span>🇺🇸</span><span>US — Eventtech Platform</span></div>
         <div class="flag"><span>🇺🇸</span><span>US — B2B Commerce Platform</span></div>
         <div class="flag"><span>🇩🇪</span><span>Germany — Proptech Platform</span></div>
+        <div class="flag"><span>🇮🇳</span><span>India — Sher-e-Punjab Ordering Platform</span></div>
       </div>
     </div>
     <div class="hiw">
@@ -227,9 +255,42 @@ a{text-decoration:none;color:inherit}
 <div class="sec" id="sec-projects">
   <div class="wrap">
     <div class="eyebrow">Work</div>
-    <div class="stitle">4 production platforms shipped</div>
-    <div class="sdesc">Click any project to see the full technical breakdown</div>
+    <div class="stitle">5 projects shipped, solo</div>
+    <div class="sdesc">5 client platforms, solo end to end · click any project for the full technical breakdown</div>
     <div class="plist">
+      <div class="pcard" id="pc-4" onclick="toggleP(4)">
+        <div class="pcard-top">
+          <div class="pcard-hdr">
+            <div class="pname-row"><span class="pname">SinghMunch (Sher-e-Punjab) — Full Stack Ordering Platform</span><span class="tag tl">Live</span><span class="tag tu">India Client</span><span class="tag ts">Solo build</span></div>
+            <span class="parrow">›</span>
+          </div>
+          <p class="pproblem">Client had no digital storefront — orders, menu updates, and payments were all handled manually by phone with no online system.</p>
+          <p class="pdesc">Full-stack ordering platform for a pure-vegetarian Punjabi restaurant: Next.js 14 storefront + NestJS API across two separate repos, with Razorpay payments, PDF receipts, and an admin dashboard for menu and order management — shipped as an installable PWA and packaged as an Android TWA app.</p>
+          <div class="pmetrics">
+            <div class="pm"><strong>26</strong><span>REST endpoints</span></div>
+            <div class="pm"><strong>2</strong><span>repos, one API contract</span></div>
+            <div class="pm"><strong>PWA + Android</strong><span>installable app</span></div>
+          </div>
+        </div>
+        <div class="pdetail">
+          <div class="pdetail-inner">
+          <div class="pdetail-body">Server-side price and stock recomputation on every order — the client can never influence the charged amount. Razorpay payments (cash-on-delivery and online) confirmed through two independent paths — client-side checkout verification and a signed webhook — both HMAC-SHA256 verified with constant-time comparison, and made idempotent via a conditional atomic update so stock only decrements and the receipt email only sends once, regardless of which path fires first (or both). On-demand PDF receipts rendered with PDFKit and emailed via Resend. Google Sign-In verified server-side against Google's own token endpoint — the API never trusts a client-asserted identity. Shipped as a PWA with an offline service worker and distributed separately as an Android Trusted Web Activity app. Deployed as a Vercel serverless function with a cached NestJS bootstrap for warm-start reuse, with a Railway/Nixpacks config as a fallback deployment target from the same codebase.</div>
+          <div class="tech-row"><span class="tech">Next.js 14</span><span class="tech">React 18</span><span class="tech">TypeScript</span><span class="tech">Tailwind CSS</span><span class="tech">NestJS 10</span><span class="tech">MongoDB</span><span class="tech">Mongoose</span><span class="tech">JWT</span><span class="tech">Google OAuth</span><span class="tech">Razorpay</span><span class="tech">Resend</span><span class="tech">Vercel Blob</span><span class="tech">PDFKit</span><span class="tech">PWA</span><span class="tech">Android TWA</span></div>
+          <div class="impact-bar">
+            <div class="impact-cell"><div class="ic-n">26</div><div class="ic-l">API endpoints</div></div>
+            <div class="impact-cell"><div class="ic-n">8</div><div class="ic-l">backend modules</div></div>
+            <div class="impact-cell"><div class="ic-n">2</div><div class="ic-l">deploy targets</div></div>
+            <div class="impact-cell"><div class="ic-n">Solo</div><div class="ic-l">full stack</div></div>
+          </div>
+          <div class="tech-row" style="margin-top:.75rem">
+            <a class="tech" style="color:var(--blue);border-color:var(--blue3)" href="https://sher-e-punjab-frontend.vercel.app" target="_blank" rel="noopener">Live storefront ↗</a>
+            <a class="tech" style="color:var(--blue);border-color:var(--blue3)" href="https://github.com/Jatingupta9120/sher-e-punjab-platform-frontend" target="_blank" rel="noopener">Frontend repo ↗</a>
+            <a class="tech" style="color:var(--blue);border-color:var(--blue3)" href="https://github.com/Jatingupta9120/sher-e-punjab-platform-backend" target="_blank" rel="noopener">Backend repo ↗</a>
+          </div>
+          </div>
+        </div>
+      </div>
+
 
       <div class="pcard" id="pc-0" onclick="toggleP(0)">
         <div class="pcard-top">
@@ -247,6 +308,7 @@ a{text-decoration:none;color:inherit}
           </div>
         </div>
         <div class="pdetail">
+          <div class="pdetail-inner">
           <div class="pdetail-body">Integrated 6+ third-party systems — video conferencing API, CRM (OAuth2/Apex REST), CMS, AWS S3/Lambda, and SMTP — into one event-creation workflow via Redis/BullMQ queue layer with automatic retries. A CRM outage or video API failure never blocks event creation. Built real-time live chat, Q&A, polls, and sponsor tracking over Socket.IO across 3 WebSocket namespaces. Webhook-driven pipeline streams recordings into S3 with idempotent retry handling.</div>
           <div class="tech-row"><span class="tech">NestJS 11</span><span class="tech">Next.js</span><span class="tech">MongoDB Atlas</span><span class="tech">Redis</span><span class="tech">BullMQ</span><span class="tech">Socket.IO</span><span class="tech">WebRTC</span><span class="tech">AWS Lambda</span><span class="tech">API Gateway</span><span class="tech">JWE</span><span class="tech">Docker</span><span class="tech">GitHub Actions</span></div>
           <div class="impact-bar">
@@ -254,6 +316,7 @@ a{text-decoration:none;color:inherit}
             <div class="impact-cell"><div class="ic-n">3</div><div class="ic-l">WS namespaces</div></div>
             <div class="impact-cell"><div class="ic-n">0</div><div class="ic-l">manual ops/event</div></div>
             <div class="impact-cell"><div class="ic-n">99.9%</div><div class="ic-l">uptime</div></div>
+          </div>
           </div>
         </div>
       </div>
@@ -273,6 +336,7 @@ a{text-decoration:none;color:inherit}
           </div>
         </div>
         <div class="pdetail">
+          <div class="pdetail-inner">
           <div class="pdetail-body">Built production-grade property management system integration across ~20 API endpoints with incremental watermark-based sync (1,000 records/batch every 15 min), exponential backoff/retry, and a dead-letter collection for failed ledger transactions. Full e-signature workflow with HMAC-SHA256-verified webhooks and idempotent event processing. AI-powered document data extraction pipeline via async BullMQ jobs. Scheduled daily financial snapshots per active lease.</div>
           <div class="tech-row"><span class="tech">NestJS</span><span class="tech">MongoDB</span><span class="tech">Redis</span><span class="tech">BullMQ</span><span class="tech">DocuSign API</span><span class="tech">Google Document AI</span><span class="tech">AWS S3</span><span class="tech">TypeScript</span><span class="tech">Swagger/OpenAPI</span><span class="tech">Winston</span></div>
           <div class="impact-bar">
@@ -280,6 +344,7 @@ a{text-decoration:none;color:inherit}
             <div class="impact-cell"><div class="ic-n">3×</div><div class="ic-l">faster docs</div></div>
             <div class="impact-cell"><div class="ic-n">15min</div><div class="ic-l">sync cycle</div></div>
             <div class="impact-cell"><div class="ic-n">100+</div><div class="ic-l">REST endpoints</div></div>
+          </div>
           </div>
         </div>
       </div>
@@ -299,6 +364,7 @@ a{text-decoration:none;color:inherit}
           </div>
         </div>
         <div class="pdetail">
+          <div class="pdetail-inner">
           <div class="pdetail-body">Outbound CRM sync: orders, customer profiles, and addresses via OAuth2 client-credentials flow. Inbound: product catalog bulk ingest via API-key-protected endpoints. Collaborated directly with client's CRM team on API contract design and field mapping. Full order lifecycle with MongoDB multi-document transactions: catalog browse → persistent cart → draft-order management → pickup/delivery placement → admin confirmation. JWT RBAC (Admin/Customer roles), transactional email, full AWS deployment solo.</div>
           <div class="tech-row"><span class="tech">Next.js 16</span><span class="tech">React 19</span><span class="tech">NestJS 11</span><span class="tech">MongoDB</span><span class="tech">Mongoose</span><span class="tech">Salesforce Apex REST</span><span class="tech">OAuth2</span><span class="tech">TypeScript</span><span class="tech">Tailwind CSS</span><span class="tech">TanStack Query</span><span class="tech">Zustand</span><span class="tech">AWS</span><span class="tech">Docker</span></div>
           <div class="impact-bar">
@@ -306,6 +372,7 @@ a{text-decoration:none;color:inherit}
             <div class="impact-cell"><div class="ic-n">0</div><div class="ic-l">partial orders</div></div>
             <div class="impact-cell"><div class="ic-n">Solo</div><div class="ic-l">full stack</div></div>
             <div class="impact-cell"><div class="ic-n">Live</div><div class="ic-l">in production</div></div>
+          </div>
           </div>
         </div>
       </div>
@@ -325,6 +392,7 @@ a{text-decoration:none;color:inherit}
           </div>
         </div>
         <div class="pdetail">
+          <div class="pdetail-inner">
           <div class="pdetail-body">Led full codebase migration from Express.js monolith to NestJS — refactoring every module, middleware, and service. Redis caching cut sector API response from 5s to 10ms (500× improvement). DB load reduced 35% through indexing and query optimization. AWS S3 pre-signed URL upload pipeline. GitHub Actions CI/CD cut deploy time 40% (45min → 27min). Grafana and Prometheus monitoring with 99.5% uptime SLA.</div>
           <div class="tech-row"><span class="tech">NestJS</span><span class="tech">Express.js</span><span class="tech">Node.js</span><span class="tech">Redis</span><span class="tech">MongoDB</span><span class="tech">AWS EC2</span><span class="tech">S3</span><span class="tech">GitHub Actions</span><span class="tech">Grafana</span><span class="tech">Prometheus</span><span class="tech">PM2</span></div>
           <div class="impact-bar">
@@ -332,6 +400,7 @@ a{text-decoration:none;color:inherit}
             <div class="impact-cell"><div class="ic-n">500×</div><div class="ic-l">Redis speedup</div></div>
             <div class="impact-cell"><div class="ic-n">−40%</div><div class="ic-l">deploy time</div></div>
             <div class="impact-cell"><div class="ic-n">99.5%</div><div class="ic-l">uptime</div></div>
+          </div>
           </div>
         </div>
       </div>
@@ -346,10 +415,10 @@ a{text-decoration:none;color:inherit}
     <div class="stitle">The full stack</div>
     <div class="sdesc">Hover any skill to highlight it</div>
     <div class="sk-grid">
-      <div class="sg"><div class="sg-name">Frontend</div><div class="sg-pills"><span class="pill">React.js</span><span class="pill">Next.js 16</span><span class="pill">TypeScript</span><span class="pill">JavaScript</span><span class="pill">Tailwind CSS</span><span class="pill">Redux Toolkit</span><span class="pill">TanStack Query</span><span class="pill">Zustand</span><span class="pill">Framer Motion</span><span class="pill">React Hook Form</span><span class="pill">Zod</span></div></div>
+      <div class="sg"><div class="sg-name">Frontend</div><div class="sg-pills"><span class="pill">React.js</span><span class="pill">Next.js 16</span><span class="pill">TypeScript</span><span class="pill">JavaScript</span><span class="pill">Tailwind CSS</span><span class="pill">Redux Toolkit</span><span class="pill">TanStack Query</span><span class="pill">Zustand</span><span class="pill">Framer Motion</span><span class="pill">React Hook Form</span><span class="pill">Zod</span><span class="pill">PWA / Android TWA</span></div></div>
       <div class="sg"><div class="sg-name">Backend</div><div class="sg-pills"><span class="pill">Node.js</span><span class="pill">NestJS 11</span><span class="pill">Express.js</span><span class="pill">TypeScript</span><span class="pill">Golang</span><span class="pill">REST APIs</span><span class="pill">WebSockets</span><span class="pill">Socket.IO</span><span class="pill">WebRTC</span><span class="pill">BullMQ</span><span class="pill">OpenAPI/Swagger</span></div></div>
       <div class="sg"><div class="sg-name">Cloud & DevOps</div><div class="sg-pills"><span class="pill">AWS EC2</span><span class="pill">S3</span><span class="pill">Lambda</span><span class="pill">API Gateway</span><span class="pill">RDS</span><span class="pill">CloudWatch</span><span class="pill">Docker</span><span class="pill">Kubernetes</span><span class="pill">GitHub Actions</span><span class="pill">Nginx</span><span class="pill">PM2</span></div></div>
-      <div class="sg"><div class="sg-name">Data & Integrations</div><div class="sg-pills"><span class="pill">MongoDB</span><span class="pill">PostgreSQL</span><span class="pill">Redis</span><span class="pill">Mongoose</span><span class="pill">Sequelize</span><span class="pill">CRM APIs</span><span class="pill">e-Signature APIs</span><span class="pill">Document AI</span><span class="pill">Microsoft Graph</span><span class="pill">OAuth2</span><span class="pill">JWE</span></div></div>
+      <div class="sg"><div class="sg-name">Data & Integrations</div><div class="sg-pills"><span class="pill">MongoDB</span><span class="pill">PostgreSQL</span><span class="pill">Redis</span><span class="pill">Mongoose</span><span class="pill">Sequelize</span><span class="pill">CRM APIs</span><span class="pill">e-Signature APIs</span><span class="pill">Document AI</span><span class="pill">Microsoft Graph</span><span class="pill">OAuth2</span><span class="pill">JWE</span><span class="pill">Razorpay</span><span class="pill">Resend</span></div></div>
     </div>
     <div style="background:var(--line);border-radius:0 0 12px 12px;overflow:hidden;margin-top:1px;border:0.5px solid var(--line)">
       <div class="sg"><div class="sg-name">Monitoring & AI tools</div><div class="sg-pills"><span class="pill">Grafana</span><span class="pill">Prometheus</span><span class="pill">Winston</span><span class="pill">GitHub Copilot</span><span class="pill">Cursor AI</span><span class="pill">New Relic</span><span class="pill">Jest</span><span class="pill">Postman</span></div></div>
@@ -509,7 +578,7 @@ function go(id){
 function toggleP(i){
   var c=document.getElementById('pc-'+i);
   var isOpen=c.classList.contains('open');
-  [0,1,2,3].forEach(function(j){document.getElementById('pc-'+j+'').classList.remove('open')});
+  [0,1,2,3,4].forEach(function(j){document.getElementById('pc-'+j+'').classList.remove('open')});
   if(!isOpen)c.classList.add('open');
 }
 function submitForm(){
@@ -527,6 +596,27 @@ function submitForm(){
 document.getElementById('cf-name').addEventListener('input',function(){document.getElementById('err-name').style.display='none'});
 document.getElementById('cf-email').addEventListener('input',function(){document.getElementById('err-email').style.display='none'});
 document.getElementById('cf-msg').addEventListener('input',function(){document.getElementById('err-msg').style.display='none'});
+function animateCount(el){
+  var target=parseFloat(el.getAttribute('data-target'));
+  var prefix=el.getAttribute('data-prefix')||'';
+  var suffix=el.getAttribute('data-suffix')||'';
+  var divisor=suffix==='k'?1000:(suffix==='M'?1000000:1);
+  var display=target/divisor;
+  var duration=1100,start=null;
+  function ease(t){return 1-Math.pow(1-t,3)}
+  function frame(ts){
+    if(!start)start=ts;
+    var p=Math.min((ts-start)/duration,1);
+    var cur=display*ease(p);
+    var val=display>=100?Math.round(cur):Math.round(cur*10)/10;
+    el.textContent=prefix+(p===1?display:val)+suffix;
+    if(p<1)requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+setTimeout(function(){
+  document.querySelectorAll('.sn-num').forEach(function(el){animateCount(el)});
+},250);
 var words=['solo.','end-to-end.','for US clients.','without tickets.'];
 var wi=0,ci=0,del=false;
 var el=document.getElementById('typed-target');
